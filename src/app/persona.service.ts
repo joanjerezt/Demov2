@@ -1,59 +1,40 @@
 import { Injectable } from '@angular/core';
-import {Headers, Http, Response} from "@angular/http";
-import {Persona}                     from './persona';
+import {Http} from "@angular/http";
 import {Observable} from "rxjs";
 
 @Injectable()
 export class PersonaService {
-  personas: Persona[] = [];
-  persona: Persona = new Persona();
-  private API: "http://localhost:3001";
+  private API: string = "http://localhost:3001";
 
   constructor(private http: Http){
   }
 
-  // Simulate GET /todos
-  getAllUsers(): Persona[] {
-    return this.personas;
-  }
-
-  // Placeholder for last id so we can simulate
-  // automatic incrementing of id's
-  lastId: number = 0;
-  // Simulate POST /todos
-  addPersona(persona: Persona): PersonaService {
-    if (!persona._id) {
-      persona._id = ++this.lastId;
-    }
-    this.personas.push(persona);
-    return this;
-  }
-
-  getUsers() {
-    const headers = this.getHeadersDefault();
-    let url: string = this.API + '/api/persona';
+  getUsers(){
+    let url: string = this.API + '/api/persona/';
     return this.http.get(url)
-      .map( (data: Response) => {
-        console.log(data);
-        let personas = data.json(); })
-      .catch(this.handleError);
+      .map(res => res.json()).catch(this.handleError);
   }
 
-  getUsers2(){
-    let url: string = this.API + '/api/persona';
-    return this.http.get(url)
-      .map(response => <Persona[]> response.json().data)
-      .do(data => console.log(data)) //debug to console
-      .catch(this.handleError);
+  getUser(id){
+    return this.http.get(this.API + '/api/persona/' + id)
+      .map(res => res.json());
   }
 
-  private getHeadersDefault() {
-    const headers = new Headers();
-    if (this.persona) {
-      headers.append('Authorization', 'TOKEN ' + this.persona.token);
-    }
-    return headers;
+  addUser(user){
+    return this.http.post(this.API + '/api/persona/', JSON.stringify(user))
+      .map(res => res.json());
   }
+
+  updateUser(user){
+    return this.http.put(this.API + '/api/persona/' + user.id, JSON.stringify(user))
+      .map(res => res.json());
+  }
+
+  deleteUser(id){
+    return this.http.delete(this.API + '/api/persona/' + id)
+      .map(res => res.json());
+  }
+
 
   private handleError(error: any) {
     console.log(error);

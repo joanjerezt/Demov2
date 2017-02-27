@@ -7,7 +7,6 @@ export class Persona {
   nombre: string;
   apellido: string;
   edad: number;
-  token: string;
 
   constructor(values: Object = {}) {
     Object.assign(this, values);
