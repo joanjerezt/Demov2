@@ -5,6 +5,9 @@ import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import {PersonaService} from "./persona.service";
+import {MaterializeModule} from "angular2-materialize";
+
+
 
 @NgModule({
   declarations: [
@@ -13,7 +16,8 @@ import {PersonaService} from "./persona.service";
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    MaterializeModule
   ],
   providers: [PersonaService],
   bootstrap: [AppComponent]

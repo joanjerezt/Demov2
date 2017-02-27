@@ -3,36 +3,42 @@
     <h1>Nº de Registros: <span class="label label-success"> {{personas.length}} </span></h1>
   </div>
 
-<div class="row">
+  <div class="row">
     <div class="col-sm-6 col-sm-offset-1">
       <table class="table table-striped">
         <tr class="info">
           <td>Nombre</td>
           <td>Apellidos</td>
           <td>Edad</td>
+          <td>Editar</td>
+          <td>Borrar</td>
         </tr>
-        <tr *ngFor="let persona of personas" (click)="selectPersona(persona)">
-          <td> {{persona.nombre}} </td>
-          <td> {{persona.apellido}} </td>
-          <td> {{persona.edad}} </td>
+        <tr *ngFor="let persona of personas">
+          <td> {{persona.nombre}}</td>
+          <td> {{persona.apellido}}</td>
+          <td> {{persona.edad}}</td>
+          <td>
+            <a>
+              <i class="material-icons">mode_edit</i>
+            </a>
+          </td>
+          <td>
+            <a (click)="deleteUser(user)" href="">
+              <i class="material-icons">delete</i>
+            </a>
+          </td>
         </tr>
       </table>
-    </div>
-    <!--<div class="col-sm-4 col-sm-offset-1 text-center">
-      <form [formGroup]="myForm">
-        <div class="form-group">
-          <input type="text" class="form-control input-lg text-center" placeholder="Nombre" [(ngModel)]="newPersona.nombre" required>
-          <br>
-          <input type="text" class="form-control input-lg text-center" placeholder="Apellido" [(ngModel)]="newPersona.apellido" required>
-          <br>
-          <input type="text" class="form-control input-lg text-center" placeholder="Edad" [(ngModel)]="newPersona.edad" required>
-        </div>
 
-        <!-- Acciones que podemos realizar en el formulario -->
-        <!--<button type="submit" class="btn btn-success btn-lg" (click)="registrarPersona()" [disabled]="myForm.$invalid || selected">Registrar</button>
-        <button type="submit" class="btn btn-warning btn-lg" (click)="modificarPersona(newPersona)" [disabled]="!newPersona.nombre || !newPersona.apellido || !newPersona.edad || !selected">Modificar</button>
-        <button type="submit" class="btn btn-danger btn-lg" (click)="borrarPersona(newPersona)" [disabled]="!newPersona.nombre || !newPersona.apellido || !newPersona.edad || !selected">Borrar</button>
-      </form>
-    </div>-->
+      <!--<div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
+        <a class="btn-floating btn-large waves-effect waves-light green"
+           routerLink="/users/new">
+          <i class="material-icons">add</i>
+        </a>
+      </div> -->
+
+
+    </div>
   </div>
 </div>
+
