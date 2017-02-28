@@ -18,12 +18,12 @@
           <td> {{persona.apellido}}</td>
           <td> {{persona.edad}}</td>
           <td>
-            <a>
-              <i class="material-icons">mode_edit</i>
+            <!--<a [routerLink]="['/users', persona._id]"> -->
+              <a><i class="material-icons">mode_edit</i>
             </a>
           </td>
           <td>
-            <a (click)="deleteUser(user)" href="">
+            <a (click)="deleteUser(persona)" href="">
               <i class="material-icons">delete</i>
             </a>
           </td>

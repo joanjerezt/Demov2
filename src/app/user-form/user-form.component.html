@@ -1,0 +1,45 @@
+<h5>{{ title }}</h5>
+ <div class="row">
+  <form materialize class="col s12" [formGroup]="form" (ngSubmit)="save()">
+    <div class="row">
+      <div class="input-field col s12">
+        <i class="material-icons prefix">account_circle</i>
+        <input id="nombre" type="text" class="validate"
+               [(ngModel)]="persona.nombre" formControlName="nombre"
+               [class.invalid]="form.controls['nombre'].touched && !form.controls['nombre'].valid"
+        >
+        <label for="nombre"
+               [class.active]="persona.nombre"
+               data-error="Se requiere que el nombre tenga al menos 3 carácteres">
+          Nombre
+        </label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s12">
+        <i class="material-icons prefix">account_circle</i>
+        <input id="apellido" type="text" class="validate"
+               [(ngModel)]="persona.apellido" formControlName="apellido"
+               [class.invalid]="form.controls['apellido'].touched && !form.controls['apellido'].valid"
+        >
+        <label for="apellido"
+               [class.active]="persona.apellido"
+               data-error="Se requiere que el apellido tenga al menos 3 carácteres">
+          Apellido
+        </label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s12">
+        <i class="material-icons prefix">phone</i>
+        <input id="edad" type="number" class="validate"
+               [(ngModel)]="persona.edad" formControlName="edad">
+        <label for="edad" [class.active]="persona.edad">Edad</label>
+      </div>
+    </div>
+    <button class="btn waves-effect waves-light" type="submit"
+            [disabled]="!form.valid">
+      Submit<i class="material-icons right">send</i>
+    </button>
+  </form>
+</div>

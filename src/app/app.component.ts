@@ -20,4 +20,19 @@ export class AppComponent implements OnInit {
       .subscribe(data => this.personas = data);
   }
 
+  deleteUser(user){
+    if (confirm("Are you sure you want to delete " + user.nombre + "?")) {
+      var index = this.personas.indexOf(user);
+      this.personas.splice(index, 1);
+
+      this.personaService.deleteUser(user._id)
+        .subscribe(null,
+          err => {
+            alert("Could not delete persona.");
+            // Revert the view back to its original state
+            this.personas.splice(index, 0, user);
+          });
+    }
+  }
+
 }

@@ -26,7 +26,7 @@ export class PersonaService {
   }
 
   updateUser(user){
-    return this.http.put(this.API + '/api/persona/' + user.id, JSON.stringify(user))
+    return this.http.put(this.API + '/api/persona/' + user._id, JSON.stringify(user))
       .map(res => res.json());
   }
 
