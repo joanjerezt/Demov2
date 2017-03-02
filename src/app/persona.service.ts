@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {Http} from "@angular/http";
+import {Http, Headers, RequestOptions} from "@angular/http";
 import {Observable} from "rxjs";
 
 @Injectable()
@@ -21,12 +21,16 @@ export class PersonaService {
   }
 
   addUser(user){
-    return this.http.post(this.API + '/api/persona/', JSON.stringify(user))
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+    let options = new RequestOptions({ headers: headers });
+    return this.http.post(this.API + '/api/persona/', JSON.stringify(user), options)
       .map(res => res.json());
   }
 
   updateUser(user){
-    return this.http.put(this.API + '/api/persona/' + user._id, JSON.stringify(user))
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+    let options = new RequestOptions({ headers: headers });
+    return this.http.put(this.API + '/api/persona/' + user._id, JSON.stringify(user), options)
       .map(res => res.json());
   }
 

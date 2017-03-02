@@ -7,9 +7,13 @@ import { AppComponent } from './app.component';
 import {PersonaService} from "./persona.service";
 import {MaterializeModule} from "angular2-materialize";
 import { UserFormComponent } from './user-form/user-form.component';
-import {RouterModule} from "@angular/router";
+import {RouterModule, Routes} from "@angular/router";
 
-
+const usersRoutes: Routes = [
+  { path: 'users', component: AppComponent, pathMatch: 'full' },
+  { path: 'users/new', component: UserFormComponent},
+  { path: 'users/:id', component: UserFormComponent}
+];
 
 @NgModule({
   declarations: [
@@ -22,7 +26,7 @@ import {RouterModule} from "@angular/router";
     HttpModule,
     MaterializeModule,
     ReactiveFormsModule,
-    RouterModule
+    RouterModule.forRoot(usersRoutes)
   ],
   providers: [PersonaService],
   bootstrap: [AppComponent]

@@ -30,15 +30,15 @@ export class UserFormComponent implements OnInit {
         Validators.required,
         Validators.minLength(3)
       ]],
-      edad: []
+      edad: ['']
     });
   }
 
   ngOnInit() {
     var id = this.route.params.subscribe(params => {
-      var id = params['_id'];
+      var id = params['id'];
 
-      this.title = id ? 'Editar usuario' : 'Nuevo usuario';
+      this.title = id ? 'Edit User' : 'New User';
 
       if (!id)
         return;
@@ -55,10 +55,9 @@ export class UserFormComponent implements OnInit {
   }
 
   save() {
-    var result,
-      userValue = this.form.value;
+    var result, userValue = this.form.value;
 
-    if (userValue.id){
+    if (userValue._id){
       result = this.personaService.updateUser(userValue);
     } else {
       result = this.personaService.addUser(userValue);

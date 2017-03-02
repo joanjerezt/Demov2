@@ -1,3 +1,4 @@
+<router-outlet></router-outlet>
 <div class="container">
   <div class="jumbotron text-center">
     <h1>Nº de Registros: <span class="label label-success"> {{personas.length}} </span></h1>
@@ -18,8 +19,8 @@
           <td> {{persona.apellido}}</td>
           <td> {{persona.edad}}</td>
           <td>
-            <!--<a [routerLink]="['/users', persona._id]"> -->
-              <a><i class="material-icons">mode_edit</i>
+            <a [routerLink]="['/users', persona._id]">
+              <i class="material-icons">mode_edit</i>
             </a>
           </td>
           <td>
@@ -29,13 +30,12 @@
           </td>
         </tr>
       </table>
-
-      <!--<div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
+      <div class="fixed-action-btn" style="bottom: 150px; right: 24px;">
         <a class="btn-floating btn-large waves-effect waves-light green"
            routerLink="/users/new">
           <i class="material-icons">add</i>
         </a>
-      </div> -->
+      </div>
 
 
     </div>
